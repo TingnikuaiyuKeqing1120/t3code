@@ -135,10 +135,12 @@ export function clearProjectFileQueryData(
   appAtomRegistry.set(optimisticFileAtom(environmentId, cwd, relativePath), null);
 }
 
+/** Extracts the root cause from an asynchronous result failure. */
 function failureCause<A>(result: AsyncResult.AsyncResult<A, unknown>): unknown {
   return result._tag === "Failure" ? Cause.squash(result.cause) : null;
 }
 
+/** Extracts the human-readable message from a failure cause or returns fallback text. */
 function errorMessage(cause: unknown): string | null {
   if (cause === null) return null;
   return cause instanceof Error ? cause.message : "Workspace query failed.";

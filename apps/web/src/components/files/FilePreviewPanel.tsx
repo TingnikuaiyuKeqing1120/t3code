@@ -905,6 +905,10 @@ function initialExplorerOpen(): boolean {
   }
 }
 
+/**
+ * Renders the file preview panel with appropriate viewers for markdown,
+ * media, code, or structured read errors with retry capabilities.
+ */
 export default function FilePreviewPanel({
   environmentId,
   cwd,
